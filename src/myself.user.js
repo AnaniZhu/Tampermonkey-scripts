@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AnnaniZhu's script
 // @namespace    https://github.com/AnaniZhu/tampermonkey-scripts
-// @version      0.1.0
+// @version      0.1.1
 // @description  优化部分网页(node 文档 api 导航固定、掘金文章目录固定...)的交互体验
 // @author       AnnaniZhu
 // @license      MIT
@@ -21,7 +21,7 @@
 
   const DOMAIN_SCRIPT_MAP = {
     'nodejs.cn': createNodeSideMenu,
-    'juejin.im': fixeJueJindCategory
+    'juejin.im': fixedJueJinCategory
   }
 
   // 注入通用样式
@@ -132,18 +132,36 @@
   }
 
   // 掘金
-  function fixeJueJindCategory () {
+  function fixedJueJinCategory () {
     // dom 延迟加载
     setTimeout(() => {
+      $('body').attr('id', 'zwh')
       $('.sticky-block-box').addClass('scroll-view')
     }, 300)
     GM_addStyle(`
+
+    #zwh .article-suspended-panel {
+      top: auto;
+      bottom: calc(2rem + 120px);
+      right: calc((100vw - 960px) / 2 + 240px - 8px);
+      transform: translateX(100%);
+    }
+
+    #zwh .suspension-panel {
+      right: calc((100vw - 960px) / 2 + 240px - 46px);
+    }
+
+    #zwh .sidebar {
+      right: -56px;
+    }
+
     .scroll-view.sticky-block-box {
        position: fixed;
-       left: 24px;
+       left: 8px;
        top: 80px;
        bottom: 20px;
        width: 300px !important;
+       max-width: calc((100% - 960px) / 2 - 8px);
        margin: auto;
        z-index: 1000;
     }
