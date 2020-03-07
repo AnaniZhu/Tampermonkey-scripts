@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AnnaniZhu's script
 // @namespace    https://github.com/AnaniZhu/tampermonkey-scripts
-// @version      0.1.1
+// @version      0.2.0
 // @description  优化部分网页(node 文档 api 导航固定、掘金文章目录固定...)的交互体验
 // @author       AnnaniZhu
 // @license      MIT
@@ -10,6 +10,7 @@
 // @run-at       document-idle
 // @include      *://nodejs.cn/api/*
 // @include      *://juejin.im/post/*
+// @include      *://dalipan.com/detail/*
 // @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -21,7 +22,8 @@
 
   const DOMAIN_SCRIPT_MAP = {
     'nodejs.cn': createNodeSideMenu,
-    'juejin.im': fixedJueJinCategory
+    'juejin.im': fixedJueJinCategory,
+    'dalipan.com': unLockDaLiPan
   }
 
   // 注入通用样式
@@ -165,6 +167,18 @@
        margin: auto;
        z-index: 1000;
     }
+    `)
+  }
+
+  // 大力盘
+  function unLockDaLiPan () {
+    GM_addStyle(`
+      #enfidialog .mobile-qrcode {
+        display: none;
+      }
+      #enfidialog .mobile-ads {
+        display: block !important;
+      }
     `)
   }
 
