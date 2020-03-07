@@ -2,7 +2,7 @@
 // @name         AnnaniZhu's script
 // @namespace    https://github.com/AnaniZhu/tampermonkey-scripts
 // @version      0.2.0
-// @description  优化部分网页(node 文档 api 导航固定、掘金文章目录固定...)的交互体验
+// @description  优化部分网页的交互体验
 // @author       AnnaniZhu
 // @license      MIT
 // @create       2019-10-23
@@ -10,7 +10,7 @@
 // @run-at       document-idle
 // @include      *://nodejs.cn/api/*
 // @include      *://juejin.im/post/*
-// @include      *://dalipan.com/detail/*
+// @include      *dalipan.com/detail/*
 // @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
