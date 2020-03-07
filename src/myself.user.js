@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AnnaniZhu's script
 // @namespace    https://github.com/AnaniZhu/tampermonkey-scripts
-// @version      0.2.0
+// @version      0.2.1
 // @description  优化部分网页的交互体验
 // @author       AnnaniZhu
 // @license      MIT
