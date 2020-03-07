@@ -15,7 +15,7 @@ const path = require('path')
       message: '选择要发布版本的类型',
       choices: [
         { name: '不发布版本', value: 'no' },
-        ...versions.reverse().map(v => ({ name: v, value: v }))
+        ...[...versions].reverse().map(v => ({ name: v, value: v }))
       ],
       default: 'no'
     }
@@ -46,7 +46,7 @@ const path = require('path')
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', `release: 脚本发布v${newVersions}`])
   await execa('npm', ['version', publishType])
-  console.log(chalk.greenBright('版本号更新完成'))
+  console.log(chalk.greenBright(`版本号更新完成: ${newVersions}`))
   pushToRemote()
 })()
 
