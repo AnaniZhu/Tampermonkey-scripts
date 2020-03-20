@@ -11,6 +11,7 @@
 // @include      *://nodejs.cn/api/*
 // @include      *://juejin.im/post/*
 // @include      *dalipan.com/detail/*
+// @include      *webpack.wuhaolin.cn/*
 // @require      https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -23,7 +24,8 @@
   const DOMAIN_SCRIPT_MAP = {
     'nodejs.cn': createNodeSideMenu,
     'juejin.im': fixedJueJinCategory,
-    'dalipan.com': unLockDaLiPan
+    'dalipan.com': unLockDaLiPan,
+    'webpack.wuhaolin.cn': hideWebpackModal
   }
 
   // 注入通用样式
@@ -178,6 +180,15 @@
       }
       #enfidialog .mobile-ads {
         display: block !important;
+      }
+    `)
+  }
+
+  // 深入浅出 webpack
+  function hideWebpackModal () {
+    GM_addStyle(`
+      .gitbook-plugin-modal {
+        left: 9999px !important;
       }
     `)
   }
